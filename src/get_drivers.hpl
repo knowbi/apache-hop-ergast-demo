@@ -59,14 +59,9 @@
     </partitioning>
     <calculation>
       <calc_type>DATE_DIFF</calc_type>
-      <conversion_mask/>
-      <currency_symbol/>
-      <decimal_symbol/>
       <field_a>today</field_a>
       <field_b>driver_dob</field_b>
-      <field_c/>
       <field_name>nb_days</field_name>
-      <grouping_symbol/>
       <remove>N</remove>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
@@ -74,14 +69,8 @@
     </calculation>
     <calculation>
       <calc_type>CONSTANT</calc_type>
-      <conversion_mask/>
-      <currency_symbol/>
-      <decimal_symbol/>
       <field_a>365</field_a>
-      <field_b/>
-      <field_c/>
       <field_name>365</field_name>
-      <grouping_symbol/>
       <remove>N</remove>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
@@ -89,14 +78,9 @@
     </calculation>
     <calculation>
       <calc_type>DIVIDE</calc_type>
-      <conversion_mask/>
-      <currency_symbol/>
-      <decimal_symbol/>
       <field_a>nb_days</field_a>
       <field_b>365</field_b>
-      <field_c/>
       <field_name>age</field_name>
-      <grouping_symbol/>
       <remove>N</remove>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
@@ -184,7 +168,7 @@
     </partitioning>
     <applicationType>TEXT PLAIN</applicationType>
     <method>GET</method>
-    <url>http://ergast.com/api/f1/drivers.json</url>
+    <url>http://ergast.com/api/f1/drivers.json?limit=100</url>
     <urlInField>N</urlInField>
     <dynamicMethod>N</dynamicMethod>
     <methodFieldName/>
@@ -213,6 +197,29 @@
     <attributes/>
     <GUI>
       <xloc>288</xloc>
+      <yloc>112</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>get today</name>
+    <type>SystemInfo</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>today</name>
+        <type>system date (fixed)</type>
+      </field>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>720</xloc>
       <yloc>112</yloc>
     </GUI>
   </transform>
@@ -340,29 +347,6 @@
     <attributes/>
     <GUI>
       <xloc>448</xloc>
-      <yloc>112</yloc>
-    </GUI>
-  </transform>
-  <transform>
-    <name>get today</name>
-    <type>SystemInfo</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>today</name>
-        <type>system date (fixed)</type>
-      </field>
-    </fields>
-    <attributes/>
-    <GUI>
-      <xloc>720</xloc>
       <yloc>112</yloc>
     </GUI>
   </transform>

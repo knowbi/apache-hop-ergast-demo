@@ -50,31 +50,17 @@
       <to>season list JSON</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>season list JSON</from>
+      <to>season &lt;= 2020</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>season &lt;= 2020</from>
+      <to>verify</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
-  <transform>
-    <name>season list (XML)</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>season</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <GUI>
-      <xloc>608</xloc>
-      <yloc>272</yloc>
-    </GUI>
-  </transform>
   <transform>
     <name>generate 1 row</name>
     <type>RowGenerator</type>
@@ -97,6 +83,51 @@
     <GUI>
       <xloc>160</xloc>
       <yloc>272</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>get seasons JSON</name>
+    <type>Rest</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <applicationType>TEXT PLAIN</applicationType>
+    <method>GET</method>
+    <url>https://ergast.com/api/f1/seasons.json?limit=100&amp;offset=0</url>
+    <urlInField>N</urlInField>
+    <dynamicMethod>N</dynamicMethod>
+    <methodFieldName/>
+    <urlField/>
+    <bodyField/>
+    <httpLogin/>
+    <httpPassword>Encrypted </httpPassword>
+    <proxyHost/>
+    <proxyPort/>
+    <preemptive>N</preemptive>
+    <trustStoreFile/>
+    <trustStorePassword>Encrypted </trustStorePassword>
+    <ignoreSsl>N</ignoreSsl>
+    <headers>
+      </headers>
+    <parameters>
+      </parameters>
+    <matrixParameters>
+      </matrixParameters>
+    <result>
+      <name>result</name>
+      <code/>
+      <response_time/>
+      <response_header/>
+    </result>
+    <attributes/>
+    <GUI>
+      <xloc>304</xloc>
+      <yloc>368</yloc>
     </GUI>
   </transform>
   <transform>
@@ -145,8 +176,8 @@
     </GUI>
   </transform>
   <transform>
-    <name>get seasons JSON</name>
-    <type>Rest</type>
+    <name>read seasons (JSON)</name>
+    <type>JsonInput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -155,37 +186,54 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <applicationType>TEXT PLAIN</applicationType>
-    <method>GET</method>
-    <url>https://ergast.com/api/f1/seasons.json?limit=100&amp;offset=0</url>
-    <urlInField>N</urlInField>
-    <dynamicMethod>N</dynamicMethod>
-    <methodFieldName/>
-    <urlField/>
-    <bodyField/>
-    <httpLogin/>
-    <httpPassword>Encrypted </httpPassword>
-    <proxyHost/>
-    <proxyPort/>
-    <preemptive>N</preemptive>
-    <trustStoreFile/>
-    <trustStorePassword>Encrypted </trustStorePassword>
-    <ignoreSsl>N</ignoreSsl>
-    <headers>
-      </headers>
-    <parameters>
-      </parameters>
-    <matrixParameters>
-      </matrixParameters>
-    <result>
-      <name>result</name>
-      <code/>
-      <response_time/>
-      <response_header/>
-    </result>
+    <include>N</include>
+    <include_field/>
+    <rownum>N</rownum>
+    <addresultfile>N</addresultfile>
+    <readurl>N</readurl>
+    <removeSourceField>N</removeSourceField>
+    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
+    <doNotFailIfNoFile>Y</doNotFailIfNoFile>
+    <ignoreMissingPath>Y</ignoreMissingPath>
+    <defaultPathLeafToNull>Y</defaultPathLeafToNull>
+    <rownum_field/>
+    <file>
+      <name/>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>season</name>
+        <path>$.MRData.SeasonTable.Seasons.*.season</path>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+    </fields>
+    <limit>0</limit>
+    <IsInFields>Y</IsInFields>
+    <IsAFile>N</IsAFile>
+    <valueField>result</valueField>
+    <shortFileFieldName/>
+    <pathFieldName/>
+    <hiddenFieldName/>
+    <lastModificationTimeFieldName/>
+    <uriNameFieldName/>
+    <rootUriNameFieldName/>
+    <extensionFieldName/>
+    <sizeFieldName/>
     <attributes/>
     <GUI>
-      <xloc>304</xloc>
+      <xloc>448</xloc>
       <yloc>368</yloc>
     </GUI>
   </transform>
@@ -258,8 +306,8 @@
     </GUI>
   </transform>
   <transform>
-    <name>read seasons (JSON)</name>
-    <type>JsonInput</type>
+    <name>season &lt;= 2020</name>
+    <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -268,55 +316,52 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <include>N</include>
-    <include_field/>
-    <rownum>N</rownum>
-    <addresultfile>N</addresultfile>
-    <readurl>N</readurl>
-    <removeSourceField>N</removeSourceField>
-    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
-    <doNotFailIfNoFile>Y</doNotFailIfNoFile>
-    <ignoreMissingPath>Y</ignoreMissingPath>
-    <defaultPathLeafToNull>Y</defaultPathLeafToNull>
-    <rownum_field/>
-    <file>
-      <name/>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-    </file>
+    <compare>
+      <condition>
+        <conditions>
+</conditions>
+        <function>&lt;=</function>
+        <leftvalue>season</leftvalue>
+        <negated>N</negated>
+        <operator>-</operator>
+        <value>
+          <isnull>N</isnull>
+          <length>-1</length>
+          <mask>####0;-####0</mask>
+          <name>constant</name>
+          <precision>0</precision>
+          <text>2020</text>
+          <type>Integer</type>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <GUI>
+      <xloc>736</xloc>
+      <yloc>368</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>season list (XML)</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
     <fields>
       <field>
         <name>season</name>
-        <path>$.MRData.SeasonTable.Seasons.*.season</path>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
       </field>
+      <select_unspecified>N</select_unspecified>
     </fields>
-    <limit>0</limit>
-    <IsInFields>Y</IsInFields>
-    <IsAFile>N</IsAFile>
-    <valueField>result</valueField>
-    <shortFileFieldName/>
-    <pathFieldName/>
-    <hiddenFieldName/>
-    <lastModificationTimeFieldName/>
-    <uriNameFieldName/>
-    <rootUriNameFieldName/>
-    <extensionFieldName/>
-    <sizeFieldName/>
     <attributes/>
     <GUI>
-      <xloc>448</xloc>
-      <yloc>368</yloc>
+      <xloc>608</xloc>
+      <yloc>272</yloc>
     </GUI>
   </transform>
   <transform>
@@ -333,13 +378,29 @@
     <fields>
       <field>
         <name>season</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
     <attributes/>
     <GUI>
       <xloc>608</xloc>
+      <yloc>368</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>verify</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <attributes/>
+    <GUI>
+      <xloc>864</xloc>
       <yloc>368</yloc>
     </GUI>
   </transform>

@@ -1,0 +1,28 @@
+{
+  "variableValues": [],
+  "database_replacements": [],
+  "autoOpening": true,
+  "basePath": "",
+  "golden_data_sets": [
+    {
+      "field_mappings": [
+        {
+          "transform_field": "season",
+          "data_set_field": "season"
+        }
+      ],
+      "field_order": [
+        "season"
+      ],
+      "data_set_name": "season_list_GOLDEN",
+      "transform_name": "verify"
+    }
+  ],
+  "input_data_sets": [],
+  "name": "get_season_list UNIT",
+  "description": "",
+  "persist_filename": "",
+  "trans_test_tweaks": [],
+  "pipeline_filename": "./src/get_season_list.hpl",
+  "test_type": "UNIT_TEST"
+}

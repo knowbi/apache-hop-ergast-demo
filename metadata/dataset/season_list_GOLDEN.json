@@ -1,0 +1,16 @@
+{
+  "base_filename": "season_list_GOLDEN.csv",
+  "name": "season_list_GOLDEN",
+  "description": "",
+  "dataset_fields": [
+    {
+      "field_comment": "",
+      "field_length": -1,
+      "field_type": 5,
+      "field_precision": 0,
+      "field_name": "season",
+      "field_format": "####0;-####0"
+    }
+  ],
+  "folder_name": ""
+}

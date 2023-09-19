@@ -78,7 +78,7 @@
     <rownumByFile>N</rownumByFile>
     <rownum_field/>
     <format>mixed</format>
-    <encoding>ISO-8859-16</encoding>
+    <encoding>UTF-8</encoding>
     <length>Characters</length>
     <add_to_result_filenames>Y</add_to_result_filenames>
     <file>

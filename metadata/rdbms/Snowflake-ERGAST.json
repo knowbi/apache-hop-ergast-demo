@@ -1,0 +1,27 @@
+{
+  "rdbms": {
+    "SNOWFLAKE": {
+      "databaseName": "ERGAST",
+      "pluginId": "SNOWFLAKE",
+      "warehouse": "ERGAST",
+      "accessType": 0,
+      "hostname": "drjseqi-ecda.snowflakecomputing.com",
+      "password": "Encrypted 2f0e1e4e95e92c1a88e18fc5ed8a2b78d",
+      "pluginName": "Snowflake",
+      "port": "443",
+      "attributes": {
+        "SUPPORTS_TIMESTAMP_DATA_TYPE": "N",
+        "QUOTE_ALL_FIELDS": "N",
+        "SUPPORTS_BOOLEAN_DATA_TYPE": "Y",
+        "FORCE_IDENTIFIERS_TO_LOWERCASE": "N",
+        "PRESERVE_RESERVED_WORD_CASE": "Y",
+        "SQL_CONNECT": "",
+        "FORCE_IDENTIFIERS_TO_UPPERCASE": "N",
+        "PREFERRED_SCHEMA_NAME": ""
+      },
+      "manualUrl": "",
+      "username": "JOSVANDONGEN"
+    }
+  },
+  "name": "Snowflake-ERGAST"
+}

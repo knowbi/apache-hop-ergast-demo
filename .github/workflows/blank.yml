@@ -1,0 +1,26 @@
+name: apache-hop-ergast-demo-pipeline
+
+on: push
+
+jobs: 
+  run-apache-hop-sample-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      # check out the Ergast demo project. Required to run a workflow in the next step.       
+      - name: checkout Ergast demo project
+        uses: actions/checkout@v3
+        with: 
+          repository: knowbi/apache-hop-ergast-demo
+          path: './project'    
+      # run the 'get input data' workflow    
+      - name: run-get-data-workflow
+        run: |
+          chmod -R 777 ./project && \
+          docker run --name run-get-data \
+            --env HOP_LOG_LEVEL=Basic \
+            --env HOP_FILE_PATH='${PROJECT_HOME}/src/get_input_data.hwf' \
+            --env HOP_PROJECT_FOLDER=/files/ \
+            --env HOP_PROJECT_NAME=custom-project \
+            --env HOP_RUN_CONFIG=local \
+            -v $(pwd)/project:/files:rw \
+            apache/hop:Development    

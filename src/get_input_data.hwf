@@ -42,8 +42,6 @@
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
       <filename>${PROJECT_HOME}/src/get_circuits.hpl</filename>
-      <logext/>
-      <logfile/>
       <loglevel>Basic</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -70,8 +68,6 @@
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
       <filename>${PROJECT_HOME}/src/get_drivers.hpl</filename>
-      <logext/>
-      <logfile/>
       <loglevel>Basic</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -87,7 +83,7 @@
       <attributes_hac/>
     </action>
     <action>
-      <name>get_races.hpl</name>
+      <name>get_season_list.hpl</name>
       <description/>
       <type>PIPELINE</type>
       <attributes/>
@@ -97,7 +93,7 @@
       <clear_rows>N</clear_rows>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/src/get_races.hpl</filename>
+      <filename>${PROJECT_HOME}/src/get_season_list.hpl</filename>
       <logext/>
       <logfile/>
       <loglevel>Basic</loglevel>
@@ -110,7 +106,7 @@
       <set_logfile>N</set_logfile>
       <wait_until_finished>Y</wait_until_finished>
       <parallel>N</parallel>
-      <xloc>576</xloc>
+      <xloc>592</xloc>
       <yloc>64</yloc>
       <attributes_hac/>
     </action>
@@ -132,8 +128,8 @@
     </hop>
     <hop>
       <from>get_drivers.hpl</from>
-      <to>get_races.hpl</to>
-      <enabled>N</enabled>
+      <to>get_season_list.hpl</to>
+      <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>N</unconditional>
     </hop>

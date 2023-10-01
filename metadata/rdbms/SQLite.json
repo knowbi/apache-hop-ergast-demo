@@ -1,7 +1,7 @@
 {
   "rdbms": {
     "SQLITE": {
-      "databaseName": "/Users/JosvanDongen1/Data/Projects/apache-hop-ergast-demo/ergastsql",
+      "databaseName": "${PROJECT_HOME}/ergastsql",
       "pluginId": "SQLITE",
       "accessType": 0,
       "hostname": "",
